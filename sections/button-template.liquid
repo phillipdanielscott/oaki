@@ -1,0 +1,110 @@
+<div style="background-color:#f2f6f7; padding: 1px;">
+  <div id="shopbutton"
+      style="width:{{section.settings.width}};
+            text-align:{{section.settings.align}};
+            margin:{{section.settings.margin}};"
+  >
+    <a href="{{ section.settings.link }}"
+      class="button"
+      style="background:{{section.settings.background}};
+            font-size:{{section.settings.fontSize}};
+            font-family:{{section.settings.font}};
+            color:{{section.settings.fontColor}};
+            padding:{{section.settings.padding}};
+            border:{{section.settings.border}};
+            font-weight:{{section.settings.fontWidth}};"
+    >
+    {{section.settings.shopall}}
+    </a>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Shopping Button",
+    "settings": [
+        {
+          "id": "margin",
+          "type": "text",
+          "label": "Margin Settings",
+          "default": "0px 0px 0px 0px"
+        },
+        {
+          "id": "shopall",
+          "type": "text",
+          "label": "Heading",
+          "default": "Title"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "id": "width",
+          "type": "text",
+          "label": "Width",
+          "default": "100%"
+        },
+        {
+          "id": "align",
+          "type": "text",
+          "label": "text-align",
+          "default": "center"
+        },
+        {
+          "id": "background",
+          "type": "text",
+          "label": "background-color",
+          "default": "#000000"
+        },
+        {
+          "id": "font",
+          "type": "text",
+          "label": "font-family",
+          "default": "Montserrat"
+        },
+        {
+          "id": "fontSize",
+          "type": "text",
+          "label": "font-size",
+          "default": "16px"
+        },
+        {
+          "id": "fontColor",
+          "type": "text",
+          "label": "font-color",
+          "default": "white"
+        },
+        {
+          "id": "padding",
+          "type": "text",
+          "label": "padding",
+          "default": "0px 0px"
+        },
+        {
+          "id": "fontWidth",
+          "type": "text",
+          "label": "font-width",
+          "default": "0"
+        },
+        {
+          "id": "border",
+          "type": "text",
+          "label": "Border",
+          "default": "2px solid #000000"
+        }
+    ],
+    "presets": [
+      {
+        "name": "button",
+        "category": "button"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

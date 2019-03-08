@@ -1,0 +1,14 @@
+<div class="current-filters">
+{% unless current_tags == nil and collection.handle == 'all' or collection.handle == nil %}
+  <a href="/collections/all">Clear All</a>
+{% endunless %}
+{% if collection and collection.handle != 'all' %}
+  <a href="/collections/all/{{ current_tags | join: '+' }}">{{ collection.title }}</a>  
+{% endif %}
+{% for tag in current_tags %}
+   {% assign coll = collections[tag] %}
+   {% if coll %}
+     {{ coll.title | link_to_remove_tag: tag }}
+   {% endif %}
+{% endfor%}
+</div>

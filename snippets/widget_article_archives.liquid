@@ -1,0 +1,30 @@
+<div class="widget" style="margin-top:25px">
+  <div>
+    <h3 class="block-title"> ARCHIVES </h3>
+  </div>
+  <div>
+    {% for tag in blog.all_tags %}
+      {% if tag contains 2016 %}
+        <li style="list-style-type: none;"><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% for tag in blog.all_tags %}
+      {% if tag contains 2015 %}
+        <li style="list-style-type: none;"><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% for tag in blog.all_tags %}
+      {% if tag contains 2014 %}
+        <li style="list-style-type: none;"><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% for tag in blog.all_tags %}
+      {% if tag contains 2013 %}
+        <li style="list-style-type: none;"><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>
+      {%endif%}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,88 @@
+{% comment %}
+
+  This template will be automatically generated for you if the file doesn't exist,
+  but where's the fun in having no control? Define your layout below.
+
+  The 'layout settings.customer_layout' line is inserted at the top of every customer account template.
+  Your theme's settings determine to use the 'default' or 'theme' customer templates.
+  More info:
+    - http://www.tetchi.ca/shopify-theme-from-scratch-part-11/
+
+  Template note:
+    - All IDs on this template are required to make the form(s) submit properly
+
+{% endcomment %}
+
+{% layout settings.customer_layout %}
+
+<header class="page-header">
+  <h1 {% if settings.enable_multilang %}data-translate="customers.order.title"{%endif%}>{{ 'customers.order.title' | t }}</h1>
+</header>
+
+<div class="grid col-md-9 col-xs-12" style="margin-top:4%;">
+  {% if customer.orders_count == 0 %}
+    <div class="order-message">
+      <a class="order-button" href="/collections/all-products">Go shop</a>
+        No order has been made yet.
+    </div>
+  {% else %}
+    <table class="full">
+      <thead>
+        <tr>
+          <th> ORDER </th>
+          <th> DATE </th>
+          <th> STATUS </th>
+          <th> TOTAL </th>
+          <th> ACTIONS </th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        {% for order in customer.orders %}
+          {% for line_item in order.line_items %}
+            <tr class="order-list">
+              <td> {{order.name}} </td>
+              <td> {{order.created_at | date: "%m/%d/%y"}} </td>
+              <td> {{order.financial_status}} </td>
+              <td>
+                {% if order.financial_status == "refunded" %}
+                  <del>
+                    {{order.total_price | money}}
+                  </del>
+                  <span style="color: #97bd61;">
+                    $0 USD
+                  </span>
+                {% else %}
+                  <span style="color: #97bd61;">
+                    {{order.total_price | money}}
+                  </span>
+                {% endif %}
+              </td>
+              <td>
+                <a class="order-status-view" href={{order.order_status_url}}>VIEW</a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+</div>
+<div class="col-md-3 col-xs-12" style="margin-top:6%; float: right;">
+  <ul>
+    <li class="nav-menu">
+      <a href="/account">Dashboard</a>
+    </li>
+    <li class="nav-menu">
+      <a href="/a/wishlist">My Wishlist</a>
+    </li>
+    <li class="nav-menu">
+      <a href="/pages/orders">Orders</a>
+    </li>
+    <li class="nav-menu">
+      <a href="/account/addresses">Addresses</a>
+    </li>
+    <li class="nav-menu">
+      <a href="/account/logout">Logout</a>
+    </li>
+  </ul>
+</div>

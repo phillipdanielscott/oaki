@@ -1,0 +1,39 @@
+<div id="textsection" style="background: url(https://cdn.shopify.com/s/files/1/0776/7671/files/about_a5c856ba-0972-4f6c-ac5c-71dbdce9accc.jpg?9648178207117600316); background-size: cover; background-position: center center; background-repeat: no-repeat; position:relative; width: 100%;min-height: 400px;">
+  <div class="container">
+    <a href="/#" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: left;">
+      	<h2 class="image-title-text"> {{ section.settings.text-box }} </h2>
+        <h3 class="image-content-text"> {{ section.settings.text }} </h3>
+    </a>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Text Box",
+    "settings": [
+      {
+        "id": "text-box",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "imagewithText",
+        "category": "image"
+      }
+	  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

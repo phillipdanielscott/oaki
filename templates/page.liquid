@@ -1,0 +1,358 @@
+<div style="margin-top: 30px;">
+  <div class="container">
+    <div class="row">
+      {% if page.title == "FAQS" %}
+        {% include 'page-faqs'%}
+      {% elsif page.title == "Payment" %}
+        {% include 'page-payment' %}
+      {% elsif page.title == "Shipping" %}
+        {% include 'page-shipping' %}
+      {% elsif page.title == "My Account" %}
+        {% include 'page-myaccount' %}
+      {% elsif page.title == "Reset Password"%}
+        {% include 'page-resetpassword'%}
+      {% elsif page.title == "Return Policy" %}
+        {% include 'page-return-policy' %}
+      {% elsif page.title == "Terms and Conditions" %}
+        {% include 'page-terms-conditions' %}
+      {% elsif page.title == "Schools" %}
+        {% include 'page-schools' %}
+      {% elsif page.title == "Wholesale" %}
+        {% include 'page-wholesa' %}
+      {% elsif page.title == "Oaki Story" %}
+        {% include 'page-oaki-story' %}
+      {% elsif page.title =="OAKI IN ACTION PHOTO GALLERY" %}
+        {% include 'page-phone-gallery'%}
+      {% elsif page.title =="Careers" %}
+        {% include 'page-careers' %}
+      {% elsif page.title == "Feedback" %}
+        {% include 'page-feedback' %}
+      {% elsif page.title == "wish-list"%}
+        {% include 'wishlist-page' %}
+      {% elsif page.title == "Orders" %}
+        {% include "order" %}
+      {% else %}
+      <div class="col-sm-9 col-xs-12" style="float:right;">
+        {% if page.title == "GIRLS" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/outerwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/cat-girls-1.jpg?6344406073906920837" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Shop Outerwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/footwears">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/cat-girls-2.jpg?6344406073906920837" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Shop Boots</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/summerwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/cat-girls-3.jpg?6344406073906920837" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Shop Swimwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/rainwears">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/cat-girls-4.jpg?6344406073906920837" width="565" height="303" alt="Shop Rainwear">
+                    <p class="button-style2">Shop Rainwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/winter-wear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/cat-girls-5.jpg?6344406073906920837" width="359" height="303" alt="Shop Snowwear">
+                    <p class="button-style2">Shop Snowwear</p>
+                  </a>
+                </div>
+              </div>
+              <div class="page-editlink">
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elsif page.title == "BOYS" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/boys-outerwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_737_Boys_Outerwear.jpg?11950503587331368986" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Shop Outerwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/boys-footwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Boys_Boots_Update.jpg?11950503587331368986" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Shop Boots</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/boys-summerwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Boys_Swimwear_Update.jpg?11950503587331368986" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Shop Swimwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/boys-rainwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_395_Boys_Rainwear.jpg?11950503587331368986" width="565" height="303" alt="Shop Rainwear">
+                    <p class="button-style2">Shop Rainwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/boys-winterwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_622_Boys_Snowwear_Update.jpg?11950503587331368986" width="359" height="303" alt="Shop Snowwear">
+                    <p class="button-style2">Shop Snowwear</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elsif page.title == "TODDLER" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/toddler_outerwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_737_Toddler_Outerwear.jpg?12667124086769395483" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Shop Outerwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/toddler_footwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Toddler_Boots.jpg?12667124086769395483" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Shop Boots</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/toddler_summer_wear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Toddler_Swimwear.jpg?12667124086769395483" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Shop Swimwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/toddler_rainwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_395_Toddler_Rainwear.jpg?12667124086769395483" width="565" height="303" alt="Shop Rainwear">
+                    <p class="button-style2">Shop Rainwear</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/toddler_winter_wear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_622_Toddler_Snowwear.jpg?12667124086769395483" width="359" height="303" alt="Shop Snowwear">
+                    <p class="button-style2">Shop Snowwear</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elsif page.title == "WOMEN" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/monumenta">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_737_Women_Monumenta.jpg?12893678228544125913" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Shop Monumenta</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/oxbow">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Women_Oxbow.jpg?12893678228544125913" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Shop Oxbow</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/noxon">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Women_Noxon_2.jpg?12893678228544125913" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Shop Noxon</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elsif page.title == "HUNTING & FISHING" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/hunt_fish_kids_waders">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_737_Hunting_and_Fishing_Kids_Waders.jpg?8702760155682205890" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Kids Waders</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/hunt_fish_kids__vests">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Hunting_and_Fishing_Kids_Vests.jpg?8702760155682205890" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Kids Vests</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/hunt_fish_footwear">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Hunting_and_Fishing_Kids_Footwear.jpg?8702760155682205890" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Kids Footwear</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% elsif page.title == "SHOP BY PRINT" %}
+        <div class="col-main">
+          <div class="static-contain">
+            <div class="page-content">
+              <div id="oaki-products">
+                <div class="oaki-product">
+                  <a href="/collections/perched_owls">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_737_Shop-by-Print_Perched_Owls.jpg?17416008548801146120" alt="Shop Outerwear" width="565" height="565">
+                    <p class="button-style1">Shop Perched Owls</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/dinosaurs">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Shop-by-Print_Dinosaurs.jpg?17416008548801146120" width="359" height="276" alt="Shop Boots">
+                    <p class="button-style1">Shop Dinosaurs</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/shark_turtles">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_567_Shop-by-Print_Sharks_Turtles.jpg?17416008548801146120" width="359" height="276" alt="Shop Swimwear">
+                    <p class="button-style1">Shop Sharks & Turtles</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/print_camo">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_395_Shop-by-Print_Camo.jpg?17416008548801146120" width="565" height="303" alt="Shop Rainwear">
+                    <p class="button-style2">Shop Camo</p>
+                  </a>
+                </div>
+                <div class="oaki-product">
+                  <a href="/collections/classic_solid_colors">
+                    <img src="https://cdn.shopify.com/s/files/1/2571/3660/files/737_622_Shop-by-Print_Classic_Solid_Colors.jpg?17416008548801146120" width="359" height="303" alt="Shop Snowwear">
+                    <p class="button-style2">Shop by Color</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      <div class="col-sm-3 col-xs-12" style="float:left;">
+        {% for link in linklists %}
+        {% assign link_title = link.title | downcase %}
+        {% if link.title == page.title %}
+          {% if page.title == "SHOP BY PRINT" %}
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 500; margin-bottom:30px;">
+            {{page.title}}
+          </h3>
+          {% else %}
+          <h3 style="font-family: Montserrat, sans-serif; font-weight: 500; margin-bottom:30px;">
+            SHOP {{page.title}}
+          </h3>
+          {% endif %}
+          <div id="collapsible-container" class="collapse-container">
+            {% for child_link in linklists[link.handle].links %}
+              <h3>
+                {% if linklists[child_link.handle] != empty %}
+                  <span class="arrow arrow-r"></span>
+                {% endif %}
+                <a href="{{ child_link.url }}">
+                  {% if settings.enable_multilang %}
+                    <span class="lang1" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">
+                      {{ child_link.title | split: '|' | first }}
+                    </span>
+                    <span class="lang2" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">
+                      {{ child_link.title | split: '|' | last }}
+                    </span>
+                    {% else %}
+                    <span>
+                      {{ child_link.title | split: '|' | first }}
+                    </span>
+                  {% endif %}
+                </a>
+              </h3>
+              <div class="sub-menu-container">
+                {% if linklists[child_link.handle] != empty %}
+                <ul style="margin-left:5%; list-style-type:none;">
+                  {% for child_link1 in linklists[child_link.handle].links %}
+                  {% if linklists[child_link1.handle] != empty %}
+                  <li class="parent dropdown-submenu {% if child_link1.active %}active{% endif %}">
+                    <a class="dropdown-toggle" href="{{ child_link1.url }}">
+                      {% if settings.enable_multilang %}
+                      <span class="lang1">{{ child_link1.title | split: '|' | first }}</span>
+                      <span class="lang2">{{ child_link1.title | split: '|' | last }}</span>
+                      {% else %}
+                      <span>{{ child_link1.title | split: '|' | first }}</span>
+                      {% endif %}
+                    </a>
+                    <div class="dropdown-menu level3">
+                      <ul>
+                        {% for child_link2 in linklists[child_link1.handle].links %}
+                        <li class="{% if child_link2.active %}active{% endif %}">
+                          <a class="" href="{{ child_link2.url }}">
+                            {% if settings.enable_multilang %}
+                            <span class="lang1">{{ child_link2.title | split: '|' | first }}</span>
+                            <span class="lang2">{{ child_link2.title | split: '|' | last }}</span>
+                            {% else %}
+                            <span>{{ child_link2.title | split: '|' | first }}</span>
+                            {% endif %}
+                          </a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </li>
+                  {% else %}
+                  <li class="{% if child_link1.active %}active{% endif %}">
+                    <a class="" href="{{ child_link1.url }}">
+                      {% if settings.enable_multilang %}
+                      <span class="lang1">{{ child_link1.title | split: '|' | first }}</span>
+                      <span class="lang2">{{ child_link1.title | split: '|' | last }}</span>
+                      {% else %}
+                      <span>{{ child_link1.title | split: '|' | first }}</span>
+                      {% endif %}
+                    </a>
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+<div>
+<script>
+  $('.page-header').removeClass('hide');
+  $('#collapsible-container').collapsible({
+  	accordion: false,
+  	accordionUpSpeed: 400,
+  	accordionDownSpeed: 400,
+  	collapseSpeed: 400,
+  	contentOpen: null,
+  	arrowRclass: 'arrow-r',
+  	arrowDclass: 'arrow-d',
+  	animate: true
+  });
+</script>
+{% comment %}
+  Regular page content goes here.
+{% endcomment %}
+<!-- <div class="rte">
+  {{ page.content }}
+</div> <div class="powr-comments" id="0573086c_1511879286"></div> -->

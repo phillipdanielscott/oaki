@@ -1,0 +1,361 @@
+
+{% capture queryString %} window.location.search {% endcapture %}
+
+{% for product in products %}
+  {% for variant in product.variants %}
+    <script type="text/javascript">
+      console.log("Variant title: ","{{ variant.title }}");
+      console.log("Variant quantity: ","{{ variant.inventory_quantity }}");
+    </script>
+  {% endfor %}
+{% endfor %}
+
+{% capture testingValue %}
+  <script type="text/javascript">
+    var testingString = $('.size-list').val();
+  </script>
+{% endcapture %}
+
+
+<script type="text/javascript">
+  alert({{ testingValue }});
+</script>
+
+
+
+
+<div class="filter-by-size">
+  <h3 class="sub-filter-menu-title"> SIZE </h3>
+  <div class="filter-by-sizes row">
+
+    {% assign testing = "" %}
+    {% assign filterT = "" %}
+
+    {% assign filterT_Y = "M,T,Y,/,5,6,7,8,9,10" | split:"," %}
+        {% for newFilter in filterT_Y %}
+        <script type="text/javascript">
+          console.log( "newFilter: ", "{{ newFilter }}" );
+        </script>
+
+    {% for product in products %}
+
+    {% comment %}
+    Create Array that signifies what order the values should be
+    {% endcomment %}
+
+
+
+      {% for option in product.options %}
+      {% if option == 'Size' or option == 'size' or option =='Sizes' or option == 'sizes' %}
+        {% assign index = forloop.index | minus: 1 %}
+
+        {% comment %}
+          Filter through newly created array "filterT_Y"
+        {% endcomment %}
+
+
+        {% for variant in product.variants %}
+          {{variant.option[index]}}
+          {% assign value = variant.options[index]%}
+
+          {% comment %}
+                  <script type="text/javascript">
+                    console.log( "{{ value }}" );
+                  </script>
+          {% endcomment %}
+
+          {% comment %}
+            check and see if value (variant.options[index]) contains T or Y
+
+            Then adds to FilterT_Y array
+          {% endcomment %}
+            {% if value contains newFilter %}
+    {% comment %}
+            <script type="text/javascript">
+              console.log("value: ", "{{ value }}");
+            </script>
+            <script type="text/javascript">
+              console.log("Product Title: ", "{{ product.title }}");
+            </script>
+            <script type="text/javascript">
+              console.log("Filter: ", "{{ newFilter }}");
+            </script>
+  {% endcomment %}
+             {% else %}
+
+               {% continue %}
+
+            {% endif %}
+
+          {% if variant.available == false %}
+
+          <script type="text/javascript">
+             // console.log("I am out");
+             $('.product-show').remove();
+          </script>
+
+            {% else %}
+
+          {% endif %}
+
+
+          {% unless values contains value %}
+            {% assign values = values | join: ',' %}
+            {% assign values = values | append: ',' | append: value %}
+            {% assign values = values | split: ',' %}
+            {% if value != "Default Title" %}
+              {% if value == "12 months" or value=="12 month" or value =="12 MONTH" or value == "12 MONTHS" or value == "12 Months" or value == "12 Month" %}
+                <div class="col-sm-4 col-md-3 col-xs-3 size-div 12-months">
+                  <ul class="size-button">
+                    <li class="size-list" value="{{value}}" onclick="handleSize('{{value}}')" id="{{value}}">{{'12M'}}</li>
+                  </ul>
+                </div>
+              {% elsif value contains '/' %}
+                {% assign exchangeValue = value %}
+                {% capture sizeValue%} {{ exchangeValue| replace: '/', '-' }} {% endcapture %}
+                {% capture subClassName %} {{ 'size-' | append: sizeValue }} {% endcapture %}
+                {% capture sizeClassName %} {{ subClassName| replace: ' ', '' }} {% endcapture %}
+                <div class="col-sm-4 col-md-3 col-xs-3 size-div {{sizeClassName}}">
+                  <ul class="size-button">
+                    <li class="size-list" value="{{sizeClassName}}" onclick="handleSize('{{value}}')" id="{{value}}">{{value}}</li>
+                  </ul>
+                </div>
+
+              {% else %}
+
+                <div class="col-sm-4 col-md-3 col-xs-3 size-div size-{{value}} test">
+                  <ul class="size-button">
+                    <li class="size-list" value="{{value}}" onclick="handleSize('{{value}}')" id="{{value}}">{{value}}</li>
+                  </ul>
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+
+
+
+         {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+{% comment %}
+{% for filteredList in testing  %}
+  <script type="text/javascript">
+    console.log("testing");
+  </script>
+{% endfor %}
+
+{% endcomment %}
+
+    <!-- <script type="text/javascript">
+      console.log("{{ testing }}");
+      console.log("{{ filterT }}");
+    </script> -->
+
+  </div>
+</div>
+<div class="filter-by-price">
+  <h3 class="sub-filter-menu-title"> PRICE </h3>
+  <div class="checkbox">
+    <input type="checkbox" onclick="handleClick(value);" class="input-assumpte" id="price" value="Below 10$"/>
+    <label for="price" class="price-value">Below $10</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" onclick="handleClick(value);" class="input-assumpte" id="price_20" value="$20-$30"/>
+    <label for="price_20" class="price-value">$20-$30</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" onclick="handleClick(value);" class="input-assumpte" id="price_30" value="$30-$40"/>
+    <label for="price_30" class="price-value">$30-$40</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" onclick="handleClick(value);" class="input-assumpte" id="price_40" value="$40-$50"/>
+    <label for="price_40" class="price-value">$40-$50</label>
+  </div>
+  <div class="checkbox">
+    <input type="checkbox" onclick="handleClick(value);" class="input-assumpte" id="price_50" value="Above $50"/>
+    <label for="price_50" class="price-value">Above $50</label>
+  </div>
+</div>
+<div class="shop-by-print">
+  <h3 class="sub-filter-menu-title"> SHOP BY PATTERN </h3>
+  {% for link in linklists.shop_pattern.links %}
+    <ul class="shop-by-prints">
+      <li onclick="getShopPatten('{{link.title}}')" value="{{link.title}}" id="{{link.title}}">
+        {% assign patternClasses = link.title | split: " " %}
+        {% assign patternClass = patternClasses[0] %}
+        {% if patternClass == "PLANER," %}
+          {% assign patternClass = "PLANER" %}
+        {% endif %}
+        <div class="sub-print-menu {{patternClass| downcase}}">
+          <img style="float: left; padding-top:2%;" src="https://cdn.shopify.com/s/files/1/2571/3660/files/favicon-32x32.png?14889430919202459869">
+          <p style="padding-left: 2%; height: 40px; vertical-align: middle; display: table-cell;">{{link.title}}</p>
+        </div>
+      </li>
+    </ul>
+  {% endfor %}
+</div>
+<div class="best-seller">
+  <h3 class="sub-filter-menu-title"> BEST SELLER </h3>
+  <ul class="best-sellers">
+    {% for product in products limit: 5 %}
+      <li class="item best-seller-title" id="best-seller-{{product.id}}">
+        <a href="{{product.url}}" title="{{product.title}}" class="best-seller-product-image">
+          <img class="best-seller-image" src="{{product.images[0] | product_img_url: 'small'}}" alt="{{product.title}}" >
+        </a>
+        <div class="best-seller-product-inner">
+          <p class="best-seller-product-name">
+            <a href="{{product.url}}">{{ product.title }}</a>
+          </p>
+          <div class="cart-collateral">
+            {% if product.compare_at_price_min > 0 %}
+              <span class="old-price"> {{ product.compare_at_price_min | money }}</span>
+            {% endif %}
+            <span class="price">{{ product.price_min | money }}</span>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<script>
+$('input.input-assumpte').on('change', function() {
+  $('input.input-assumpte').not(this).prop('checked', false);
+});
+
+function makeQueryStringUrl() {
+  return Object.keys(Shopify.queryParams).map(function(k) {
+    return k + '=' + Shopify.queryParams[k];
+  }).join('&');
+}
+
+
+function handleClick(val) {
+  var checkFlag = $('.input-assumpte').is(':checked');
+  if(checkFlag) {
+    switch (val) {
+      case 'Below 10$':
+      Shopify.queryParams.max_price = 10;
+      Shopify.queryParams.min_price = 0;
+      break;
+      case '$20-$30':
+      Shopify.queryParams.min_price = 20;
+      Shopify.queryParams.max_price = 30;
+      break;
+      case '$30-$40':
+      Shopify.queryParams.min_price = 30;
+      Shopify.queryParams.max_price = 40;
+      break;
+      case '$40-$50':
+      Shopify.queryParams.min_price = 40;
+      Shopify.queryParams.max_price = 50;
+      break;
+      case 'Above $50':
+      Shopify.queryParams.min_price = 50;
+      Shopify.queryParams.max_price = 1000;
+      break;
+    }
+    location.search = makeQueryStringUrl();
+  } else {
+    delete Shopify.queryParams['min_price'];
+    delete Shopify.queryParams['max_price'];
+    location.search = makeQueryStringUrl();
+  }
+}
+
+function getShopPatten(val) {
+  switch(val) {
+    case 'DOTS AND STRIPES':
+      if (Shopify.queryParams.shop_pattern == 'Dots') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Dots';
+    break;
+    case 'ANIMALS AND INSECTS':
+      if (Shopify.queryParams.shop_pattern == 'Animals') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Animals';
+    break;
+    case 'UNICORNS AND FAIRIES':
+      if (Shopify.queryParams.shop_pattern == 'Unicorns') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Unicorns';
+    break;
+    case 'FLORAL':
+      if (Shopify.queryParams.shop_pattern == 'Floral') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Floral';
+    break;
+    case 'MISC':
+      if (Shopify.queryParams.shop_pattern == 'Misc') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Misc';
+    break;
+    case 'CAMO':
+      if (Shopify.queryParams.shop_pattern == 'Camo') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Camo';
+    break;
+    case 'PLANER, TRAINS AND AUTOMOBILES':
+      if (Shopify.queryParams.shop_pattern == 'Planes') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Planes';
+    break;
+    case 'SOLID COLOR':
+      if (Shopify.queryParams.shop_pattern == 'Solid') delete Shopify.queryParams['shop_pattern'];
+      else Shopify.queryParams.shop_pattern = 'Solid';
+    break;
+  }
+  location.search = makeQueryStringUrl();
+}
+
+var sizes = [];
+var removeSize = '';
+function handleSize(val) {
+  console.log("Value: ",val);
+  console.log(val);
+  var jqueryClass = '';
+  var index = 0;
+
+  // get jQuery class name
+  if (val === "12 months" || val === "12 Month" || val === "12 Months" || val === "12 MONTH") {
+    jqueryClass = '.12-months';
+    val = "12-months"
+  } else {
+    if (val.includes('/') === true) {
+      var changeValue = val.replace('/', '-');
+      jqueryClass = '.size-'+changeValue;
+    } else {
+      jqueryClass = '.size-'+val;
+    }
+  }
+
+  // set style
+  if ( Shopify.queryParams.sizefilter !== undefined ) {
+    sizes = Shopify.queryParams.sizefilter.split(',');
+  }
+  index = sizes.indexOf(val);
+  if (index === -1) {
+    sizes.push(val);
+    $(jqueryClass).css('border', '4px solid #97bd61');
+    if (Shopify.queryParams.sizefilter === undefined) {
+      Shopify.queryParams.sizefilter = val;
+    } else {
+      Shopify.queryParams.sizefilter = Shopify.queryParams.sizefilter.concat(',', val);
+    }
+  } else {
+    sizes.splice(index, 1);
+    $(jqueryClass).css('border', '4px solid #e0dcdc');
+    if (Shopify.queryParams.sizefilter.indexOf(val) === 0) {
+      if (Shopify.queryParams.sizefilter.indexOf(',') > -1 ) {
+        removeSize = val + ',';
+        Shopify.queryParams.sizefilter = Shopify.queryParams.sizefilter.replace(removeSize, '');
+      } else {
+        delete Shopify.queryParams['sizefilter'];
+      }
+    } else {
+      removeSize = ',' + val;
+      Shopify.queryParams.sizefilter = Shopify.queryParams.sizefilter.replace(removeSize, '');
+    }
+
+  }
+  location.search = makeQueryStringUrl();
+}
+
+
+
+
+</script>

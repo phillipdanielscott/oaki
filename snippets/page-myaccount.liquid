@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-main">
+      <div class="static-contain">
+        <div class="page-title">
+          <h2 class="entry-title">MY ACCOUNT</h2>
+        </div>
+        <div class="page-content">
+          <div class="woocommerce">
+            <div class="u-columns col2-set" id="customer_login">
+              <div class="u-column1 col-1">
+                <h2 class="account-login">Login</h2>
+                <form method="post" class="login">
+                  <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                    <label for="username">
+                      Username or email address
+                      <span class="required">*</span>
+                    </label>
+                    <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" value="" required>
+                  </p>
+                  <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" required>
+                  </p>
+                  <p class="form-row">
+                    <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="eb049da2c0">
+                    <input type="hidden" name="_wp_http_referer" value="/my-account/">
+                    <label for="rememberme" class="inline">
+                      <input class="woocommerce-Input woocommerce-Input--checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever">
+                       Remember me
+                     </label>
+                     <input type="submit" class="woocommerce-Button button" name="login" value="Login">
+                   </p>
+                   <p class="woocommerce-LostPassword lost_password">
+                     <a href="/pages/reset-password">Forget password?</a>
+                   </p>
+                 </form>
+               </div>
+               <div class="u-column2 col-2">
+                 <h2 class="account-login">Register</h2>
+                 <form method="post" class="register">
+                   <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                     <label for="reg_email">Email address <span class="required">*</span></label>
+                     <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" value="" required>
+                   </p>
+                   <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                     <label for="reg_password">Password <span class="required">*</span></label>
+                     <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" required>
+                   </p>
+                   <div style="left: -999em; position: absolute;">
+                     <label for="trap">Anti-spam</label>
+                     <input type="text" name="email_2" id="trap" tabindex="-1">
+                   </div>
+                   <p class="woocomerce-FormRow form-row">
+                     <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="cd66231358">
+                     <input type="hidden" name="_wp_http_referer" value="/my-account/">
+                     <input type="submit" class="woocommerce-Button button" name="register" value="Register">
+                   </p>
+                 </form>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

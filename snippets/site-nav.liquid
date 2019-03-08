@@ -1,0 +1,415 @@
+
+<!--Top Menu -->
+
+<div class=" megamenu" style="width:100%">
+  <ul class="navbar-nav site-nav">
+    {% for link in linklists[main_menu].links %}
+    {% if link.title != "SHOP BY PATTERN" %}
+    {% assign hasMega = false %}
+
+    {% assign intMega = 0 %}
+    {% assign link_title = link.title | downcase %}
+    {% assign fullwidth = '' %}
+    {% assign haslable = false %}
+    {% assign hasimg = false %}
+
+    {% for i in (1..5) %}
+
+
+    {% capture megamenu %}menuitem_enable_{{ i }}{% endcapture %}
+    {% capture megamenu_title %}menuitem_title_{{ i }}{% endcapture %}
+    {% capture lablenew %}menuitem_title_label_{{ i }}{% endcapture %}
+    {% capture labledisplay %}enable_hot_{{ i }}{% endcapture %}
+    {% capture enableimg %}enable_img_{{ i }}{% endcapture %}
+    {% assign megamenu_title = settings[megamenu_title] | strip | downcase %}
+
+    {% if settings[megamenu] %}
+
+    {% if link_title == megamenu_title %}
+    {% assign hasMega = true %}
+    {% assign intMega = i %}
+
+
+    {% if settings[enableimg] %}
+    {% assign hasimg = true %}
+    {% endif %}
+
+    {% if settings[labledisplay] %}
+    {% assign haslable = true %}
+    {% assign lable_new = settings[lablenew]  %}
+    {% else %}
+    {% assign lable_new = '' %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% if hasMega %}
+    {% capture menufullwidth %}menuitem_fullwidth_{{ intMega }}{% endcapture %}
+    {% if settings[menufullwidth] %}
+    {% assign fullwidth = 'full-width' %}
+    {% assign container_menu ='container' %}
+    {% else %}
+    {% assign fullwidth = 'aligned-center' %}
+    {% assign container_menu = '' %}
+    {% endif %}
+    <li class="menu-dropdown  mega-menu  level-top {{ fullwidth }} {% if link.active %}active{% endif %}">
+      <a class="dropdown-toggle" href="{{ link.url }}">
+        {% if settings.enable_multilang %}
+        <span class="lang1">{{ link.title | split: '|' | first }}</span>
+        <span class="lang2">{{ link.title | split: '|' | last }}</span>
+        {% else %}
+        <span>{{ link.title | split: '|' | first }}</span>
+        {% endif %}
+        {% if haslable %}
+        <span class="lable-menu lable-new-{{ intMega }}">
+          {% if settings.enable_multilang %}
+          <span class="lang1">{{ lable_new | split: '|' | first }}</span>
+          <span class="lang2">{{ lable_new | split: '|' | last }}</span>
+          {% else %}
+          <span>{{ lable_new | split: '|' | first }}</span>
+          {% endif %}
+        </span>
+        {% endif %}
+      </a>
+      {% assign mega_link_handle = link.handle %}
+      {% include settings.header_megamenu_style %}
+    </li>
+    {% else %}
+    {% if linklists[link.handle] != empty %}
+    <li class="menu-dropdown level-top mega-menu full-width {% if settings.display_megamenu and items_list contains cat %} mega-menu {% endif %}  {% if link.active %}active{% endif %}">
+      <a class="dropdown-toggle has-category lable-menu lable-new-{{ intMega }}" href="{{ link.url }}">
+        {% if settings.enable_multilang %}
+        <span class="lang1" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">{{ link.title | split: '|' | first }}</span>
+        <span class="lang2" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">{{ link.title | split: '|' | last }}</span>
+        {% else %}
+        <span>{{ link.title | split: '|' | first }}</span>
+        {% endif %}
+      </a>
+      {% if link.title == "GIRLS" %}
+      {% assign size = linklists[link.handle].links.size %}
+      <div class="dropdown-sub sub-3" style="width:100vw; margin-left:-50vw; left:60%">
+        <div class="dropdown-menu-inner">
+          <div class="row row-eq-height">
+            <div class="mega-item col-sm-12 col-md-12">
+              <div class="row row-eq-height ">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="block fullwidth">
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-snow-boots">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/GirlsRainboots.jpg?8331250809759908836" alt="Banner">
+                      <p class="button-style">RAINBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-snow-boots-1">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/GirlsSnowboots.jpg?8331250809759908836" alt="Banner">
+                      <p class="button-style">SNOWBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-rainwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/GirlsRainwear.jpg?8331250809759908836" alt="Banner">
+                      <p class="button-style">RAINWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-winterwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/GirlsWinterwear.jpg?8331250809759908836" alt="Banner">
+                      <p class="button-style">WINTERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-summerwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Summerwear_Header.jpg?8920585431039597760" alt="Banner">
+                      <p class="button-style">SUMMERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/girl-accessories">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Accessories_Header.jpg?16207516436416127549" alt="Banner">
+                      <p class="button-style">ACCESSORIES</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elsif link.title == "BOYS" %}
+      {% assign size = linklists[link.handle].links.size %}
+      <div class="dropdown-sub sub-3" style="width:100vw; margin-left:-50vw; left:60%">
+        <div class="dropdown-menu-inner  ">
+          <div class="row row-eq-height">
+            <div class="mega-item col-sm-12 col-md-12">
+              <div class="row row-eq-height ">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="block fullwidth">
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-rain-boots">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/BoysRainboots.jpg?7713589360996998856" alt="Banner">
+                      <p class="button-style">RAINBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-snow-boots">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/BoysSnowboots_jpg.jpg?7713589360996998856" alt="Banner">
+                      <p class="button-style">SNOWBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-rainwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/BoysRainwear.jpg?7713589360996998856" alt="Banner">
+                      <p class="button-style">RAINWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-winterwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/BoysWinterwear.jpg?7713589360996998856" alt="Banner">
+                      <p class="button-style">WINTERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-summerwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Summerwear_Header.jpg?8920585431039597760" alt="Banner">
+                      <p class="button-style">SUMMERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/boy-accessories">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Accessories_Header.jpg?16207516436416127549" alt="Banner">
+                      <p class="button-style">ACCESSORIES</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elsif link.title == "TODDLER" %}
+      {% assign size = linklists[link.handle].links.size %}
+      <div class="dropdown-sub sub-3" style="width:100vw; margin-left:-50vw; left:60%">
+        <div class="dropdown-menu-inner  ">
+          <div class="row row-eq-height">
+            <div class="mega-item col-sm-12 col-md-12">
+              <div class="row row-eq-height ">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="block fullwidth">
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-rain-boots">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Rainboot_Header.jpg?4193212264944044861" alt="Banner">
+                      <p class="button-style">RAINBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-snow-boots">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Snowboot_Header.jpg?4371086116052697719" alt="Banner">
+                      <p class="button-style">SNOWBOOTS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-rainwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Rainwear_Header.jpg?6730941751094992662" alt="Banner">
+                      <p class="button-style">RAINWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-winterwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Winterwear_Header.jpg?13624882749556218044" alt="Banner">
+                      <p class="button-style">WINTERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-summerwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Summerwear_Header.jpg?8920585431039597760" alt="Banner">
+                      <p class="button-style">SUMMERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/toddler-accessories">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Accessories_Header.jpg?16207516436416127549" alt="Banner">
+                      <p class="button-style">ACCESSORIES</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elsif link.title == "WOMEN" %}
+      <div class="dropdown-sub sub-3 container" style="left: 10%">
+        <div class="row row-eq-height">
+          <div class="mega-item col-sm-12 col-md-12">
+            <div class="row row-eq-height ">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block fullwidth">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+              <div class="col-content editable">
+                <a href="https://{{shop.domain}}/collections/women">
+                  <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                    <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Womens_Header.jpg?10634122485611082632" alt="Banner">
+                    <p class="button-style">FOOTWER</p>
+                  </div>
+                </a>
+              </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% elsif link.title == "HUNTING & FISHING" %}
+      {% assign size = linklists[link.handle].links.size %}
+      <div class="dropdown-sub sub-3 container" style="left:10%">
+        <!-- style="width:100vw; margin-left:-50vw; left:60%" -->
+        <div class="dropdown-menu-inner">
+          <div class="row row-eq-height">
+            <div class="mega-item col-sm-12 col-md-12">
+              <div class="row row-eq-height ">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="block fullwidth">
+              <div class="col-sm-4">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/hunting-and-fishing-waders">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Waders_Header.jpg?16614217458771311297" alt="Banner">
+                      <p class="button-style">WADERS</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/hunting-and-fishing-footwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Hunting_Footwear_Header.jpg?16614217458771311297" alt="Banner">
+                      <p class="button-style">FOOTWER</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="col-content editable">
+                  <a href="https://{{shop.domain}}/collections/hunting-and-fishing-outerwear">
+                    <div class="be-banner style-15 autosize-text" data-fontratio="4.7">
+                      <img src="https://cdn.shopify.com/s/files/1/0776/7671/files/Hunting_Outerwear_Header.jpg?16614217458771311297" alt="Banner">
+                      <p class="button-style">OUTERWEAR</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <style>
+        .dropdown-menu-inner > a.image-left{position:absolute}
+        .mega-menu.level-top .text-float-right .mega-col-inner{border-right:0;border-left: 0px solid #e1e1e1;padding-left:15px;}
+        .text-float-right > div{float:right}
+        .text-float-right{float:right}
+      </style>
+    </li>
+    {% else %}
+    <li class="{% if link.active %}active{% endif %} level-top">
+      <a class="" href="{{ link.url }}" target="_self">
+        {% if settings.enable_multilang %}
+        <span class="lang1" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">{{ link.title | split: '|' | first }}</span>
+        <span class="lang2" style="font-weight: 500; font-size: 14px; font-family: Montserrat, sans-serif;">{{ link.title | split: '|' | last }}</span>
+        {% else %}
+        <span>{{ link.title | split: '|' | first }}</span>
+        {% endif %}
+      </a>
+    </li>
+    {% endif %}
+    {% endif %}
+    {%endif%}
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- End Menu -->

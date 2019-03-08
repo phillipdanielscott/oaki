@@ -1,0 +1,27 @@
+<div class="container">
+  <div id="ct_size_guide" class="modal fade set-modal" role="dialog" aria-labelledby="sizeGuideModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="sizeGuideModal">{{product.title}}</h4>
+        </div>
+        <div class="modal-header">
+          <h4 class="modal-title" id="sizeGuideModal">Measuring Tips to Assure The Best Fit</h4>
+        </div>
+        <div class="modal-body">
+          {% if product.metafields.product_data.image_link %}
+            <img src={{product.metafields.product_data.image_link}}>
+          {% endif %}
+          {% if product.metafields.product_data.size_table %}
+            {{ product.metafields.product_data.size_table }}
+          {% endif %}
+          <p>
+            <small>{{product.metafields.product_data.size_guide_description}}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

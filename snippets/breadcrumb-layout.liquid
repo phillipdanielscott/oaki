@@ -1,0 +1,73 @@
+<div class="breadcrumb-show">
+  <div class="container">
+    <div class="row header-route">
+      <a href="/" title="Back to the frontpage" class="home-breadcrumb">HOME</a>
+      {% if template contains 'product' %}
+        {% if collection %}
+        <span class="icon"></span>
+          {% if collection.handle %}
+            {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+            {{ collection.title | link_to: url }}
+          {% endif %}
+        {% endif %}
+
+        <span class="icon"></span>
+        <p class="home-breadcrumb">{{ product.title }}</p>
+
+      {% elsif template contains 'collection' and collection.handle %}
+        {% if current_tags %}
+          <span class="icon"></span>
+          {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+          {{ collection.title | link_to: url }}
+          <span class="icon"></span>
+          <a class="home-breadcrumb">{{ current_tags.first }}</a>
+        {% else %}
+          <span class="icon"></span>
+          {% if collection.title contains 'Products' %}
+            <a href="{{collection.url}}" class="home-breadcrumb">Shop All</a>
+          {% elsif collection.title contains 'GIRLS' %}
+            {% assign title = collection.title | split:'GIRLS' %}
+            <a href="https://{{shop.domain}}/collections/shop-all" class="home-breadcrumb"> GIRLS </a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{title[1]}}</a>
+          {% elsif collection.title contains 'BOYS' %}
+            {% assign title = collection.title | split:'BOYS' %}
+            <a href="https://{{shop.domain}}/collections/boys-shop-all" class="home-breadcrumb"> BOYS </a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{title[1]}}</a>
+          {% elsif collection.title contains 'TODDLER' %}
+            {% assign title = collection.title | split:'TODDLER' %}
+            <a href="https://{{shop.domain}}/collections/toddler-shop-all" class="home-breadcrumb"> TODDLER </a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{title[1]}}</a>
+          {% elsif collection.title contains 'WOMEN' %}
+            {% assign title = collection.title | split:'WOMEN' %}
+            <a href="https://{{shop.domain}}/collections/women" class="home-breadcrumb"> WOMEN </a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{title[1]}}</a>
+          {% elsif collection.title contains 'HUNTING' %}
+            {% assign title = collection.title | split:'HUNTING AND FISHING' %}
+            <a href="https://{{shop.domain}}/collections/hunting-fishing" class="home-breadcrumb"> HUNTING AND FISHING </a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{title[1]}}</a>
+          {% elsif collection.title contains 'products'%}
+            <a href="{{collection.url}}" class="home-breadcrumb"> SHOP ALL </a>
+          {% else %}
+            <a href="https://{{shop.domain}}/collections/shop-by-print" class="home-breadcrumb">SHOP BY PATTERN</a>
+            <a href="{{collection.url}}" class="home-breadcrumb">{{collection.title}}</a>
+          {% endif %}
+        {% endif %}
+
+      {% elsif template == 'article' %}
+        <span class="icon"></span>
+        {{ blog.title | link_to: blog.url }}
+        <span class="icon"></span>
+        <p class="home-breadcrumb">{{ article.title }}</p>
+
+      {% elsif template contains 'page' %}
+
+        <span class="icon"></span>
+        <p class="home-breadcrumb">{{ page.title }}</p>
+
+      {% else %}
+        <span class="icon"></span>
+        <p class="home-breadcrumb">{{ page_title }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

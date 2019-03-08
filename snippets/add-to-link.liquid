@@ -1,0 +1,23 @@
+{% if settings.enable_quickview %}
+  <div class="add-to-link">
+    <div class="quickview-button1" style="background-color:#97bd61;">
+      <a href="{{ product.url | within: collection }}" id="{{ product.handle }}" data-toggle="tooltip" data-placement="top" title="Select options" class="sca-qv-button harman_btn3">
+        <i class="fa fa-shopping-cart fa-1" aria-hidden="true"></i>
+        <span class="select-options" {% if settings.enable_multilang %}data-translate="product.quickview"{%endif%}>{{ 'product.quickview' | t }}</span>
+      </a>
+    </div>
+  </div>
+{%endif%}
+<div class="wishlist">
+  <span class="smartwishlist sw_tooltip tooltip unbookmarked tooltipstered  " data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}">
+    <span class="fa fa-heart-o">
+    </span>
+  </span>
+</div>
+
+{% if product.compare_at_price_max > 0 %}
+  <span class="sale-mark"> SALE </span>
+{% endif %}
+{% comment %}
+{% include 'wishlist-product' %}
+{% endcomment %}
