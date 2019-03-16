@@ -582,7 +582,10 @@ Check if the product is sold out and set a variable to be used below.
                           {% endif %}
                         </div>
                         <div style="margin-top: 110px" class="submit-button-container">
-                          <button type="submit" name="add" class="btn testing-add-to-cart" id="product-add-to-cart" {% if settings.enable_multilang %}data-translate="product.detail.add_cart"{%endif%} disabled>
+
+
+                          <button type="submit" name="add" class="btn testing-add-to-cart" id="product-add-to-cart" {% if settings.enable_multilang %}data-translate="product.detail.add_cart"{%endif%} {% if product.title contains "Umbrella" %}   {% elsif product.title contains "Mittens" %} {% else %} disabled {% endif %}>
+
                             <i class="fa fa-shopping-cart fa-1" aria-hidden="true"></i>
                             {{'product.detail.add_cart' | t}}
                           </button>

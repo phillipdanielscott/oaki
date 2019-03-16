@@ -1,0 +1,78 @@
+<div class="registration-container">
+<h1 class="entry-title">{{ page.title }}</h1>
+
+<div class="row">
+  <div class="registration-details col-md-6 col-sm-12">
+    {{ page.content }}
+  </div>
+  <div class="col-md-6 col-sm-12 product-form-container">
+
+    {% form 'contact' %}
+    {% comment %}
+    Successful message
+    {% endcomment %}
+    {% if form.posted_successfully? %}
+    <p class="note form-success fadeInUp" {% if settings.enable_multilang %}data-translate="page_cms.contact_successt"{%endif%}>
+      {{ 'page_cms.contact_success' | t }}
+    </p>
+    {% endif %}
+    {% include 'form-errors-custom' %}
+    <div id="contactFormWrapper">
+      {% if section.settings.contact_title != blank %}
+      <h2>
+        {% if settings.enable_multilang %}
+        <span class="lang1">{{ section.settings.contact_title | split: '|' | first }}</span>
+        <span class="lang2">{{ section.settings.contact_title | split: '|' | last }}</span>
+        {% else %}
+        {{ section.settings.contact_title | split: '|' | first }}
+        {% endif %}
+      </h2>
+      {% endif %}
+
+      <input type="text" name="contact[name]" id="contactFormName" {% if settings.enable_multilang %}data-translate="page_cms.contact_yourname" translate-item="placeholder"{% endif %} placeholder="{{ 'page_cms.contact_yourname' | t }}" required>
+
+      <input type="email" name="contact[email]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="{{ 'page_cms.contact_youremail' | t }}" required>
+
+      <input type="text" name="contact[placeofpurchase]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Place of Purchase" required>
+
+      <input type="text" name="contact[purchasenumber]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Purchase #" required>
+
+      <input type="text" name="contact[address]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Address Line 1" required>
+
+      <input type="text" name="contact[address]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Address Line 2">
+
+      <input type="text" name="contact[city]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="City" required>
+
+      <input type="text" name="contact[state]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="State" required>
+
+      <input type="text" name="contact[zip]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Zip" required>
+
+      <input type="text" name="contact[country]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Country" required>
+
+      <input type="text" name="contact[phone]" id="contactFormEmail" autocorrect="off" autocapitalize="off" {% if settings.enable_multilang %}data-translate="page_cms.contact_youremail" translate-item="placeholder"{% endif %} placeholder="Phone" required>
+
+
+      <input type="submit" class="btn left product-register-btn"  {% if settings.enable_multilang %}data-translate="page_cms.contact_button"{%endif%} value="Register">
+    </div>
+    {% endform %}
+
+
+
+
+  </div>
+</div>
+</div>
+
+<style media="screen">
+  .main_container{
+    width: 60%;
+   }
+
+   @media only screen and (max-width:1024px){
+
+     .main_container{
+       width: 90%;
+      }
+
+   }
+</style>
